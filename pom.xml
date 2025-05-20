@@ -84,7 +84,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <executions>
-                    <!-- Execution for npm install -->
+                    <!-- Execution for npm install (React) -->
                     <execution>
                         <id>npm-install</id>
                         <phase>generate-resources</phase>
@@ -96,11 +96,27 @@
                             <arguments>
                                 <argument>install</argument>
                                 <argument>--prefix</argument>
-                                <argument>frontend/my-react-app</argument>
+                                <argument>frontend/react-app</argument>
                             </arguments>
                         </configuration>
                     </execution>
-                    <!-- Execution for npm run build -->
+                    <!-- Execution for npm install (AngularJS) -->
+                    <execution>
+                        <id>npm-install-angular</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                                <argument>--prefix</argument>
+                                <argument>frontend/angularjs-app</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <!-- Execution for npm run build (React) -->
                     <execution>
                         <id>npm-run-build</id>
                         <phase>generate-resources</phase>
@@ -113,7 +129,24 @@
                                 <argument>run</argument>
                                 <argument>build</argument>
                                 <argument>--prefix</argument>
-                                <argument>frontend/my-react-app</argument>
+                                <argument>frontend/react-app</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <!-- Execution for npm run build (AngularJS) -->
+                    <execution>
+                        <id>npm-run-build-angular</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
+                                <argument>--prefix</argument>
+                                <argument>frontend/angularjs-app</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -136,9 +169,18 @@
                             <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <!-- Use an absolute path relative to the project base -->
-                                    <directory>${project.basedir}/frontend/my-react-app/dist</directory>
+                                    <!-- React build output -->
+                                    <directory>${project.basedir}/frontend/react-app/dist</directory>
                                     <filtering>false</filtering>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <!-- AngularJS build output -->
+                                    <directory>${project.basedir}/frontend/angularjs-app/dist</directory>
+                                    <filtering>false</filtering>
+                                    <targetPath>js/angular</targetPath>
                                     <includes>
                                         <include>**/*</include>
                                     </includes>

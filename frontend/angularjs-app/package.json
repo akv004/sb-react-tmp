@@ -1,0 +1,11 @@
+{
+  "name": "angularjs-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.11"
+  },
+  "scripts": {
+    "build": "mkdir -p dist/js/components && cp src/app.js dist/js && cp src/components/*.js dist/js/components/"
+  }
+}

@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" ng-app="legacyApp">
 <head>
     <meta charset="UTF-8">
-    <title>React App</title>
+    <title>React App with Angular Menu</title>
     <!-- Note: Static resources are served from the classpath root -->
     <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <script th:src="@{/js/angular/app.js}"></script>
+    <script th:src="@{/js/angular/components/menu.component.js}"></script>
 </head>
 <body>
+<div ng-controller="MenuController" class="menu">
+    <ul>
+        <li ng-repeat="item in menuItems">
+            <a ng-href="{{item.link}}">{{item.name}}</a>
+        </li>
+    </ul>
+</div>
 <div id="root"></div>
 <script th:src="@{/js/main.js}"></script>
 </body>
