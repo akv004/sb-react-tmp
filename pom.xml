@@ -79,46 +79,42 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Frontend Maven Plugin to automate Node, npm, and Vite build -->
             <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.12.0</version>
-                <configuration>
-                    <!-- Install Node and npm in the target directory, which is writable -->
-                    <installDirectory>${project.build.directory}/node</installDirectory>
-                    <nodeVersion>v18.16.0</nodeVersion>
-                    <npmVersion>9.6.0</npmVersion>
-                </configuration>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
                 <executions>
-                    <!-- Execution to install Node and npm -->
-                    <execution>
-                        <id>install node and npm</id>
-                        <goals>
-                            <goal>install-node-and-npm</goal>
-                        </goals>
-                    </execution>
+                    <!-- Execution for npm install -->
                     <execution>
                         <id>npm-install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
                         <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                         <configuration>
-                            <arguments>--prefix frontend/my-react-app install</arguments>
-                            <workingDirectory>${project.basedir}</workingDirectory>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                                <argument>--prefix</argument>
+                                <argument>frontend/my-react-app</argument>
+                            </arguments>
                         </configuration>
                     </execution>
-                    <!-- Execution to run 'npm run build' for Vite -->
+                    <!-- Execution for npm run build -->
                     <execution>
                         <id>npm-run-build</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
                         <phase>generate-resources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                         <configuration>
-                            <arguments>--prefix frontend/my-react-app run build</arguments>
-                            <workingDirectory>${project.basedir}</workingDirectory>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
+                                <argument>--prefix</argument>
+                                <argument>frontend/my-react-app</argument>
+                            </arguments>
                         </configuration>
                     </execution>
                 </executions>
