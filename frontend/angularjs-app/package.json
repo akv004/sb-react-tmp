@@ -6,6 +6,6 @@
     "angular": "1.5.11"
   },
   "scripts": {
-    "build": "mkdir -p dist/components && cp src/app.js dist && cp src/components/*.js dist/components/"
+    "build": "mkdir -p dist/components && cp src/app.js dist && cp src/components/*.js dist/components/ && cp src/components/*.html dist/components/"
   }
 }

@@ -3,8 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+export function renderReactApp(containerId = 'root') {
+  createRoot(document.getElementById(containerId)!).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  )
+}
+
+(window as any).renderReactApp = renderReactApp
