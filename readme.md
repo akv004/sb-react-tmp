@@ -4,17 +4,17 @@ Here are the commands to create a new Vite-powered React + TypeScript project:
 
 Initialize the project using Vite’s official starter:
 # Using npm:
-npm create vite@latest my-react-app -- --template react-ts
+npm create vite@latest react-app -- --template react-ts
 
 # Or using yarn:
-yarn create vite my-react-app --template react-ts
+yarn create vite react-app --template react-ts
 
 # Or using pnpm:
-pnpm create vite my-react-app --template react-ts
-my-react-app is your project name; change it if needed.
+pnpm create vite react-app --template react-ts
+react-app is your project name; change it if needed.
 The --template react-ts part indicates React + TypeScript.
 Install dependencies:
-cd my-react-app
+cd react-app
 npm install
 (Use yarn install or pnpm install if you prefer another package manager.)
 Run development server:
@@ -26,3 +26,5 @@ Vite will produce optimized files in a dist folder, ready for deployment.
 
 
 
+
+This project also includes an AngularJS 1.5 app under frontend/angularjs-app.
