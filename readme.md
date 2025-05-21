@@ -1,4 +1,5 @@
-2. Creating a React + TypeScript App with Vite
+2. add .npmrc where you have package.json
+3. Creating a React + TypeScript App with Vite
 
 Here are the commands to create a new Vite-powered React + TypeScript project:
 
