@@ -1,10 +1,21 @@
 import './App.css'
 
-function App() {
+interface AppProps {
+  page?: string
+}
 
+function Home() {
+  return <h2>Home Page</h2>
+}
+
+function About() {
+  return <h2>About Page</h2>
+}
+
+function App({ page = 'Home' }: AppProps) {
   return (
     <>
-     <h1> This is react component </h1>
+      {page === 'About' ? <About /> : <Home />}
     </>
   )
 }

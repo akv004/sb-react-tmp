@@ -1,12 +1,18 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, Root } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-export function renderReactApp(containerId = 'root') {
-  createRoot(document.getElementById(containerId)!).render(
+let root: Root | null = null
+
+export function renderReactApp(page = 'Home', containerId = 'root') {
+  const container = document.getElementById(containerId)!
+  if (!root) {
+    root = createRoot(container)
+  }
+  root.render(
     <StrictMode>
-      <App />
+      <App page={page} />
     </StrictMode>,
   )
 }

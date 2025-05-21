@@ -8,7 +8,8 @@ angular.module('legacyApp').component('appMenu', {
 
     this.select = function(item) {
       if ($window.renderReactApp) {
-        $window.renderReactApp();
+        // Pass the selected menu item's name to the React renderer
+        $window.renderReactApp(item.name);
       }
     };
   }]
